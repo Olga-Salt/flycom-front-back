@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const Postscreen = () => {
+const MyTaskScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Postscreen</Text>
+      <Text>Мои задачи</Text>
     </View>
   );
 };
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Postscreen;
+export default MyTaskScreen;

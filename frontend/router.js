@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { AntDesign, Feather } from "@expo/vector-icons";
 
-import PostsScreen from "./Screens/auth/mainScreen/Postscreen";
+import MyTaskScreen from "./Screens/auth/mainScreen/MyTaskScreen";
 import CreateScreen from "./Screens/auth/mainScreen/CreateScreen";
 import ProfileScreen from "./Screens/auth/mainScreen/ProfileScreen";
 import { RegistrationScreen, LoginScreen } from "./Screens/auth";
@@ -62,7 +62,7 @@ export const useRuote = (
     >
       <MainTab.Screen
         name="Публикации"
-        component={PostsScreen}
+        component={MyTaskScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <Feather name="grid" size={size} color={color} />
@@ -93,6 +93,16 @@ export const useRuote = (
       <MainTab.Screen
         name="Profile"
         component={ProfileScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused, color, size }) => (
+            <Feather name="user" size={size} color={color} />
+          ),
+        }}
+      />
+      <MainTab.Screen
+        name="Login"
+        component={LoginScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused, color, size }) => (

@@ -134,6 +134,7 @@ import {
   Linking,
   Dimensions,
 } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 import { useForm, Controller } from "react-hook-form";
 
 import { styles } from "./styles";
@@ -205,7 +206,7 @@ export default function LoginScreen({
               }}
             >
               <View style={{ ...styles.form, width: dimensions }}>
-                <Text style={styles.screenTitle}>Войти</Text>
+                <Text style={styles.screenTitle}>Вход в личный кабинет</Text>
                 <View style={styles.inputWrapper}>
                   <Controller
                     control={control}
@@ -215,7 +216,7 @@ export default function LoginScreen({
                         onBlur={onBlur}
                         onChangeText={(value) => onChange(value)}
                         value={value}
-                        placeholder={"Адрес электронной почты"}
+                        placeholder={"Логин"}
                         keyboardType="email-address"
                         onFocus={() => setIsShowKeyBoard(true)}
                         onSubmitEditing={() => keyBoardHide()}
@@ -231,7 +232,7 @@ export default function LoginScreen({
                   />
                   <View>
                     {errors?.email && (
-                      <Text style={{ fontSize: 20, color: "red" }}>
+                      <Text style={{ fontSize: 16, color: "red" }}>
                         {errors?.email?.message || "Error"}
                       </Text>
                     )}
@@ -271,7 +272,7 @@ export default function LoginScreen({
                     </Text>
                     <View>
                       {errors?.password && (
-                        <Text style={{ fontSize: 20, color: "red" }}>
+                        <Text style={{ fontSize: 16, color: "red" }}>
                           {errors?.password?.message || "Error"}
                         </Text>
                       )}
@@ -280,19 +281,19 @@ export default function LoginScreen({
                 </View>
 
                 <TouchableOpacity
-                  style={[styles.btn, styles.shadowProp]}
+                  // style={[styles.btnWithGradient]}
                   activeOpacity={0.8}
                   onPress={handleSubmit(onSubmit)}
                 >
-                  <Text style={styles.btnTitle}>Зарегестрироваться</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  onPress={() => navigation.navigate("Registration")}
-                >
-                  <Text style={styles.btnIsSignIn}>
-                    Нет аккаунта? Зарегистрироваться
-                  </Text>
+                  <LinearGradient
+                    style={[styles.btnWithGradient]}
+                    activeOpacity={0.8}
+                    colors={["#75C7F1", "#384596"]}
+                    locations={[0, 1]}
+                    end={{ x: 0.1, y: 1 }}
+                  >
+                    <Text style={styles.btnTitle}>ВОЙТИ</Text>
+                  </LinearGradient>
                 </TouchableOpacity>
               </View>
             </View>
