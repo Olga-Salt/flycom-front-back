@@ -12,7 +12,7 @@ import { useFonts } from "expo-font";
 
 import { useRuote } from "./router";
 
-// import PostsScreen from "./Screens/auth/mainScreen/Postscreen";
+// import MyTaskScreen from "./Screens/auth/mainScreen/MyTaskScreen";
 // import CreateScreen from "./Screens/auth/mainScreen/CreateScreen";
 // import ProfileScreen from "./Screens/auth/mainScreen/ProfileScreen";
 // import { RegistrationScreen, LoginScreen } from "./Screens/auth";
@@ -26,6 +26,9 @@ export default function App() {
   const [fontsLoaded] = useFonts({
     "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
     "Roboto-Midium": require("./assets/fonts/Roboto-Medium.ttf"),
+    "Inter-Medium": require("./assets/fonts/Inter-Medium.ttf"),
+    "Inter-Regular": require("./assets/fonts/Inter-Regular.ttf"),
+    "Inter-Bold": require("./assets/fonts/Inter-Bold.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {

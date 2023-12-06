@@ -11,11 +11,10 @@ export const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   screenTitle: {
-    fontSize: 30,
+    fontSize: 18,
     textAlign: "center",
     color: "#212121",
-    fontFamily: "Roboto-Midium",
-    // fontWeight: 500,
+    fontFamily: "Inter-Medium",
   },
 
   formWrapper: {
@@ -55,18 +54,46 @@ export const styles = StyleSheet.create({
     borderColor: "#E8E8E8",
     borderWidth: 1,
     height: 50,
-    paddingLeft: 16,
+    paddingLeft: 24,
     borderRadius: 8,
     marginTop: 17,
-    fontSize: 16,
-    fontFamily: "Roboto-Regular",
+    fontSize: 14,
+    fontFamily: "Inter-Regular",
   },
   inputWrapper: {
     marginTop: 16,
-    // marginHorizontal: 16,
+    // marginHorizontal: 40,
   },
+
+  btnWithGradient: {
+    borderRadius: 8,
+    // borderWidth: 1,
+    marginTop: 43,
+    // height: 51,
+    paddingBottom: 14,
+    paddingTop: 14,
+    justifyContent: "center",
+    alignItems: "center",
+    marginHorizontal: 60,
+
+    // ...Platform.select({
+    //   ios: {
+    //     backgroundColor: "#fff",
+    //     borderColor: "#FF6C00",
+    //   },
+    //   android: {
+    //     backgroundColor: "#fff",
+    //     borderColor: "#FF6C00",
+    //   },
+    //   default: {
+    //     backgroundColor: "#fff",
+    //     borderColor: "#FF6C00",
+    //   },
+    // }),
+  },
+
   btn: {
-    borderRadius: 100,
+    borderRadius: 8,
     borderWidth: 1,
     marginTop: 43,
     height: 51,
@@ -74,20 +101,20 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     marginHorizontal: 16,
 
-    ...Platform.select({
-      ios: {
-        backgroundColor: "#FF6C00",
-        borderColor: "#FF6C00",
-      },
-      android: {
-        backgroundColor: "#FF6C00",
-        borderColor: "#FF6C00",
-      },
-      default: {
-        backgroundColor: "#FF6C00",
-        borderColor: "#FF6C00",
-      },
-    }),
+    // ...Platform.select({
+    //   ios: {
+    //     backgroundColor: "#FF6C00",
+    //     borderColor: "#FF6C00",
+    //   },
+    //   android: {
+    //     backgroundColor: "#FF6C00",
+    //     borderColor: "#FF6C00",
+    //   },
+    //   default: {
+    //     backgroundColor: "#FF6C00",
+    //     borderColor: "#FF6C00",
+    //   },
+    // }),
   },
   btnIsSignIn: {
     color: "#1B4371",
@@ -96,17 +123,18 @@ export const styles = StyleSheet.create({
   },
   btnTitle: {
     color: "#fff",
-    fontSize: 16,
-    fontFamily: "Roboto-Regular",
+    fontSize: 20,
+    fontWeight: "bold",
+    fontFamily: "Inter-Bold",
   },
   showPassTitle: {
-    fontFamily: "Roboto-Regular",
+    fontFamily: "Inter-Regular",
 
     color: "#1B4371",
     position: "absolute",
     right: 16,
     top: 19,
     paddingVertical: 15,
-    cursor: "pointer",
+    // cursor: "pointer",
   },
 });
