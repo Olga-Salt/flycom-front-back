@@ -5,16 +5,20 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
-  image: {
-    flex: 1,
-    resizeMode: "cover",
-    justifyContent: "flex-end",
-  },
+  // image: {
+  //   flex: 1,
+  //   resizeMode: "cover",
+  //   justifyContent: "flex-end",
+  // },
   screenTitle: {
     fontSize: 18,
     textAlign: "center",
     color: "#212121",
     fontFamily: "Inter-Medium",
+  },
+
+  imageSvg: {
+    alignItems: "center",
   },
 
   formWrapper: {

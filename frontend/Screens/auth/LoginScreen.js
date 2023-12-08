@@ -141,6 +141,7 @@ import { styles } from "./styles";
 
 import { useState, useEffect } from "react";
 
+import SvgLogo from "../../assets/image/LogoSvg";
 const supportedURL = "https://google.com";
 const width = Dimensions.get("window").width - 20 * 2;
 
@@ -206,6 +207,9 @@ export default function LoginScreen({
               }}
             >
               <View style={{ ...styles.form, width: dimensions }}>
+                <View style={styles.imageSvg}>
+                  <SvgLogo />
+                </View>
                 <Text style={styles.screenTitle}>Вход в личный кабинет</Text>
                 <View style={styles.inputWrapper}>
                   <Controller
