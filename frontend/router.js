@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
+import { Platform } from "react-native";
 
 import React from "react";
 import { AntDesign, Feather } from "@expo/vector-icons";
@@ -8,6 +9,11 @@ import MyTaskScreen from "./Screens/auth/mainScreen/MyTaskScreen";
 import CreateScreen from "./Screens/auth/mainScreen/CreateScreen";
 import ProfileScreen from "./Screens/auth/mainScreen/ProfileScreen";
 import { RegistrationScreen, LoginScreen } from "./Screens/auth";
+
+import Todo from "./assets/image/Todo";
+import { Image } from "react-native";
+
+import { styles } from "./css/routerStyles";
 
 const MainTab = createBottomTabNavigator();
 const authStack = createStackNavigator();
@@ -56,8 +62,13 @@ export const useRuote = (
   return (
     <MainTab.Navigator
       screenOptions={{
-        tabBarShowLabel: false,
-        tabBarStyle: { height: 83 },
+        tabBarActiveTintColor: "#006adc",
+        tabBarStyle: {
+          height: 76,
+          paddingBottom: 20,
+          borderTopColor: "transparent",
+          backgroundColor: "#fff",
+        },
       }}
     >
       <MainTab.Screen
@@ -65,43 +76,52 @@ export const useRuote = (
         component={MyTaskScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
-            <Feather name="grid" size={size} color={color} />
-          ),
-        }}
-      />
-      <MainTab.Screen
-        name="Создать публикацию"
-        component={CreateScreen}
-        options={{
-          tabBarIcon: ({ focused, color, size }) => (
-            <AntDesign
-              name="plus"
-              size={size}
-              color="#fff"
-              style={{
-                backgroundColor: "#FF6C00",
-                borderRadius: 20,
-                height: 40,
-                width: 70,
-                textAlign: "center",
-                padding: 7,
-              }}
+            <Image
+              source={require("./assets/image/ToDo.png")}
+              style={{ width: 40, height: 40 }}
             />
           ),
         }}
       />
       <MainTab.Screen
-        name="Profile"
-        component={ProfileScreen}
+        name="Календарь"
+        component={MyTaskScreen}
         options={{
-          headerShown: false,
           tabBarIcon: ({ focused, color, size }) => (
-            <Feather name="user" size={size} color={color} />
+            <Image
+              source={require("./assets/image/calendar.png")}
+              style={{ width: 40, height: 40 }}
+            />
           ),
         }}
       />
       <MainTab.Screen
-        name="Login"
+        name="Карта"
+        component={CreateScreen}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <Image
+              source={require("./assets/image/map.png")}
+              style={{ width: 40, height: 40 }}
+            />
+          ),
+        }}
+      />
+      <MainTab.Screen
+        name="Настройки"
+        component={ProfileScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused, color, size }) => (
+            <Image
+              source={require("./assets/image/setings.png")}
+              style={{ width: 40, height: 40 }}
+            />
+          ),
+        }}
+      />
+      <MainTab.Screen
+        name="Логин"
         component={LoginScreen}
         options={{
           headerShown: false,
