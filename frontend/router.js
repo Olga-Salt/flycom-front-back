@@ -61,7 +61,7 @@ export const useRuote = (
       }}
     >
       <MainTab.Screen
-        name="Публикации"
+        name="Мои задачи"
         component={MyTaskScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
