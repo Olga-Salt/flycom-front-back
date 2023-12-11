@@ -153,7 +153,7 @@ export default function LoginScreen({
   const [isShowPassword, setIsShowPassword] = useState(true);
   const [isShowKeyBoard, setIsShowKeyBoard] = useState(false);
 
-  const [dimensions, setDimensions] = useState(width);
+  const [dimensions, setDimensions] = useState(width - 20 * 2);
   const {
     handleSubmit,
     control,
@@ -172,7 +172,6 @@ export default function LoginScreen({
   };
 
   const onSubmit = (data) => {
-    // console.log(data);
     handleLoginSubmit(data);
     reset();
     keyBoardHide();
@@ -195,23 +194,49 @@ export default function LoginScreen({
   return (
     <TouchableWithoutFeedback onPress={keyBoardHide}>
       <View style={styles.container} onLayout={onLayoutRootView}>
-        <ImageBackground
-          style={styles.image}
-          source={require("../../assets/PhotoBG.jpg")}
-        >
-          <KeyboardAvoidingView behavior={Platform.OS === "ios" && "padding"}>
-            <View
-              style={{
-                ...styles.formWrapper,
-                marginBottom: isShowKeyBoard ? -180 : 0,
-              }}
-            >
-              <View style={{ ...styles.form, width: dimensions }}>
-                <View style={styles.imageSvg}>
-                  <SvgLogo />
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" && "padding"}>
+          <View
+            style={{
+              ...styles.formWrapper,
+              marginBottom: isShowKeyBoard ? 20 : 0,
+            }}
+          >
+            <View style={{ ...styles.form, width: dimensions }}>
+              <View style={styles.imageSvg}>
+                <SvgLogo />
+              </View>
+              <Text style={styles.screenTitle}>Вход в личный кабинет</Text>
+              <View style={styles.inputWrapper}>
+                <Controller
+                  control={control}
+                  render={({ field: { onChange, onBlur, value = "" } }) => (
+                    <TextInput
+                      style={styles.input}
+                      onBlur={onBlur}
+                      onChangeText={(value) => onChange(value)}
+                      value={value}
+                      placeholder={"Логин"}
+                      keyboardType="email-address"
+                      onFocus={() => setIsShowKeyBoard(true)}
+                      onSubmitEditing={() => keyBoardHide()}
+                    />
+                  )}
+                  name="email"
+                  rules={{
+                    required: {
+                      value: true,
+                      message: "Логин обязателен",
+                    },
+                  }}
+                />
+                <View>
+                  {errors?.email && (
+                    <Text style={{ fontSize: 14, color: "red" }}>
+                      {errors?.email?.message || "Error"}
+                    </Text>
+                  )}
                 </View>
-                <Text style={styles.screenTitle}>Вход в личный кабинет</Text>
-                <View style={styles.inputWrapper}>
+                <View style={{ position: "relative" }}>
                   <Controller
                     control={control}
                     render={({ field: { onChange, onBlur, value = "" } }) => (
@@ -220,89 +245,57 @@ export default function LoginScreen({
                         onBlur={onBlur}
                         onChangeText={(value) => onChange(value)}
                         value={value}
-                        placeholder={"Логин"}
-                        keyboardType="email-address"
+                        placeholder={"Пароль"}
+                        secureTextEntry={isShowPassword}
                         onFocus={() => setIsShowKeyBoard(true)}
                         onSubmitEditing={() => keyBoardHide()}
                       />
                     )}
-                    name="email"
+                    name="password"
                     rules={{
                       required: {
                         value: true,
-                        message: "Почта обязательна!",
+                        message: "Пароль обязателен",
+                      },
+                      minLength: {
+                        value: 5,
+                        message: "Минимум 5 символов",
                       },
                     }}
                   />
+                  <Text
+                    style={styles.showPassTitle}
+                    onPress={HandleshowPassword}
+                  >
+                    {isShowPassword ? "Показать" : "Скрыть"}
+                  </Text>
                   <View>
-                    {errors?.email && (
-                      <Text style={{ fontSize: 16, color: "red" }}>
-                        {errors?.email?.message || "Error"}
+                    {errors?.password && (
+                      <Text style={{ fontSize: 14, color: "red" }}>
+                        {errors?.password?.message || "Error"}
                       </Text>
                     )}
                   </View>
-                  <View style={{ position: "relative" }}>
-                    <Controller
-                      control={control}
-                      render={({ field: { onChange, onBlur, value = "" } }) => (
-                        <TextInput
-                          style={styles.input}
-                          onBlur={onBlur}
-                          onChangeText={(value) => onChange(value)}
-                          value={value}
-                          placeholder={"Пароль"}
-                          secureTextEntry={isShowPassword}
-                          onFocus={() => setIsShowKeyBoard(true)}
-                          onSubmitEditing={() => keyBoardHide()}
-                        />
-                      )}
-                      name="password"
-                      rules={{
-                        required: {
-                          value: true,
-                          message: "Пароль обязателен!",
-                        },
-                        minLength: {
-                          value: 5,
-                          message: "Минимум 5 символов",
-                        },
-                      }}
-                    />
-                    <Text
-                      style={styles.showPassTitle}
-                      onPress={HandleshowPassword}
-                    >
-                      {isShowPassword ? "Показать" : "Скрыть"}
-                    </Text>
-                    <View>
-                      {errors?.password && (
-                        <Text style={{ fontSize: 16, color: "red" }}>
-                          {errors?.password?.message || "Error"}
-                        </Text>
-                      )}
-                    </View>
-                  </View>
                 </View>
-
-                <TouchableOpacity
-                  // style={[styles.btnWithGradient]}
-                  activeOpacity={0.8}
-                  onPress={handleSubmit(onSubmit)}
-                >
-                  <LinearGradient
-                    style={[styles.btnWithGradient]}
-                    activeOpacity={0.8}
-                    colors={["#75C7F1", "#384596"]}
-                    locations={[0, 1]}
-                    end={{ x: 0.1, y: 1 }}
-                  >
-                    <Text style={styles.btnTitle}>ВОЙТИ</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
               </View>
+
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={handleSubmit(onSubmit)}
+              >
+                <LinearGradient
+                  style={[styles.btnWithGradient]}
+                  activeOpacity={0.8}
+                  colors={["#75C7F1", "#384596"]}
+                  locations={[0, 1]}
+                  end={{ x: 0.1, y: 1 }}
+                >
+                  <Text style={styles.btnTitle}>ВОЙТИ</Text>
+                </LinearGradient>
+              </TouchableOpacity>
             </View>
-          </KeyboardAvoidingView>
-        </ImageBackground>
+          </View>
+        </KeyboardAvoidingView>
       </View>
     </TouchableWithoutFeedback>
   );
