@@ -3,14 +3,13 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Platform } from "react-native";
 
 import React from "react";
-import { AntDesign, Feather } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
 import MyTaskScreen from "./Screens/auth/mainScreen/MyTaskScreen";
 import CreateScreen from "./Screens/auth/mainScreen/CreateScreen";
 import ProfileScreen from "./Screens/auth/mainScreen/ProfileScreen";
 import { RegistrationScreen, LoginScreen } from "./Screens/auth";
 
-import Todo from "./assets/image/Todo";
 import { Image } from "react-native";
 
 import { styles } from "./css/routerStyles";
@@ -65,7 +64,7 @@ export const useRuote = (
         tabBarActiveTintColor: "#006adc",
         tabBarStyle: {
           height: 76,
-          paddingBottom: 20,
+          paddingBottom: Platform.OS === "ios" ? 20 : 10,
           borderTopColor: "transparent",
           backgroundColor: "#fff",
         },
@@ -117,16 +116,6 @@ export const useRuote = (
               source={require("./assets/image/setings.png")}
               style={{ width: 40, height: 40 }}
             />
-          ),
-        }}
-      />
-      <MainTab.Screen
-        name="Логин"
-        component={LoginScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused, color, size }) => (
-            <Feather name="user" size={size} color={color} />
           ),
         }}
       />

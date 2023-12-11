@@ -4,6 +4,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    justifyContent: "center",
   },
   // image: {
   //   flex: 1,
@@ -14,7 +15,8 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: "center",
     color: "#212121",
-    fontFamily: "Inter-Medium",
+    fontFamily: "Inter-Regular",
+    marginTop: 32,
   },
 
   imageSvg: {
@@ -23,14 +25,13 @@ export const styles = StyleSheet.create({
 
   formWrapper: {
     backgroundColor: "#fff",
-    borderTopRightRadius: 25,
-    borderTopLeftRadius: 25,
     alignItems: "center",
   },
 
   form: {
-    paddingBottom: 78,
-    paddingTop: 92,
+    // paddingBottom: 78,
+    // paddingTop: 92,
+    // paddingTop: 180,
   },
 
   // shadowProp: {
@@ -57,10 +58,10 @@ export const styles = StyleSheet.create({
   input: {
     borderColor: "#E8E8E8",
     borderWidth: 1,
-    height: 50,
+    height: 32,
     paddingLeft: 24,
     borderRadius: 8,
-    marginTop: 17,
+    marginTop: 16,
     fontSize: 14,
     fontFamily: "Inter-Regular",
   },
@@ -71,14 +72,12 @@ export const styles = StyleSheet.create({
 
   btnWithGradient: {
     borderRadius: 8,
-    // borderWidth: 1,
-    marginTop: 43,
-    // height: 51,
-    paddingBottom: 14,
-    paddingTop: 14,
+    marginTop: 32,
+    paddingBottom: 12,
+    paddingTop: 12,
     justifyContent: "center",
     alignItems: "center",
-    marginHorizontal: 60,
+    marginHorizontal: 32,
 
     // ...Platform.select({
     //   ios: {
@@ -127,18 +126,17 @@ export const styles = StyleSheet.create({
   },
   btnTitle: {
     color: "#fff",
-    fontSize: 20,
+    fontSize: 14,
     fontWeight: "bold",
     fontFamily: "Inter-Bold",
   },
   showPassTitle: {
     fontFamily: "Inter-Regular",
-
+    fontSize: 12,
     color: "#1B4371",
     position: "absolute",
     right: 16,
-    top: 19,
+    top: 9,
     paddingVertical: 15,
-    // cursor: "pointer",
   },
 });

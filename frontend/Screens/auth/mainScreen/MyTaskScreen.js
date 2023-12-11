@@ -1,10 +1,42 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useState, useEffect } from "react";
+import { set } from "react-hook-form";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Image,
+  Dimensions,
+} from "react-native";
 
-const MyTaskScreen = () => {
+const MyTaskScreen = ({ route }) => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    if (route.params) {
+      setPosts((prev) => [...prev, route.params]);
+    }
+  }, [route.params]);
+
   return (
     <View style={styles.container}>
-      <Text>Мои задачи</Text>
+      <FlatList
+        data={posts}
+        keyExtractor={(item, idx) => idx.toString()}
+        renderItem={({ item }) => (
+          <View style={{ alignItems: "center", justifyContent: "center" }}>
+            <Image
+              source={{ uri: item.photo }}
+              style={{
+                width: Dimensions.get("window").width * 0.9,
+                height: 200,
+                borderRadius: 8,
+              }}
+            />
+            <Text>{item.text}</Text>
+          </View>
+        )}
+      />
     </View>
   );
 };
